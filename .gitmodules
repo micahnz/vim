@@ -1,0 +1,21 @@
+[submodule "bundles/zencoding"]
+	path = bundles/zencoding
+	url = http://github.com/mattn/zencoding-vim.git
+[submodule "bundles/xoria256"]
+	path = bundles/xoria256
+	url = git://github.com/vim-scripts/xoria256.vim.git
+[submodule "bundles/vim-surround"]
+	path = bundles/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "bundles/vim-repeat"]
+	path = bundles/vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
+[submodule "bundles/vim-easymotion"]
+	path = bundles/vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
+[submodule "bundles/supertab"]
+	path = bundles/supertab
+	url = git://github.com/ervandew/supertab.git
+[submodule "bundles/nerdtree"]
+	path = bundles/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
