@@ -19,3 +19,9 @@
 [submodule "bundles/nerdtree"]
 	path = bundles/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundles/scroll-colors"]
+	path = bundles/scroll-colors
+	url = git://github.com/vim-scripts/ScrollColors.git
+[submodule "bundles/ctrlp.vim"]
+	path = bundles/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git

@@ -57,6 +57,9 @@ set incsearch
 " Show command typed
 set showcmd
 
+" No wrap
+set nowrap
+
 " set list then display tab and space as characters
 set listchars=tab:\|-,trail:-
 
@@ -88,7 +91,7 @@ set foldcolumn=1
 set nu
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -97,7 +100,7 @@ set hid
 set hlsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+	  set lazyredraw 
 
 " Show matching brackets when text indicator is over them
 set showmatch 
@@ -185,8 +188,8 @@ set noexpandtab
 set smarttab
 
 " 1 tab == 2 spaces
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 
 " Linebreak on 500 characters
 set lbr
@@ -274,7 +277,6 @@ map <leader>q :e ~/buffer<cr>
 map <leader>pp :setlocal paste!<cr>
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Visual mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -294,17 +296,22 @@ nmap <leader>w :w!<cr>
 map <silent> <leader>, :noh<cr>
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>
+map <leader>bc :Bclose<cr>
 
 " Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
+map <leader>ba :1,1000 bc!<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>tj :tabnext
+map <leader>tf :tabfirst<cr>
+map <leader>tl :tablast<cr>
+
+map <C-t> :tabnew<cr>
+map <C-w> :tabclose<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -334,7 +341,7 @@ map <leader>s? z=
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
-    set undodir=~/.vim_runtime/temp_dirs/undodir
+    set undodir=~/.vim/temp_dirs/undodir
     set undofile
 catch
 endtry
@@ -425,12 +432,10 @@ let g:bufExplorerFindActive=1
 let g:bufExplorerSortBy='name'
 map <leader>o :BufExplorer<cr>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => MRU plugin
+" => CTRL-P MRU plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
+map <leader>f :CtrlPMRU<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -459,11 +464,3 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark 
 map <leader>nf :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => python-mode
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:pymode_indent = 0
-let g:pymode_lint_checker = "pyflakes"
-
