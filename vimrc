@@ -5,6 +5,7 @@ set nocp
 " And pathogen.vim is available to us.
 " set runtimepath+=~/.vim_runtime
 
+" powerline
 set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim
 
 " colour support
@@ -68,6 +69,9 @@ set wildmenu
 " Use mosue
 set mouse=a
 
+" Share system clipboard
+set clipboard=unnamedplus
+
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
@@ -102,7 +106,7 @@ set hid
 set hlsearch
 
 " Don't redraw while executing macros (good performance config)
-	  set lazyredraw 
+set lazyredraw 
 
 " Show matching brackets when text indicator is over them
 set showmatch 
@@ -140,33 +144,14 @@ syntax enable
 " Set customed color scheme
 set background=dark
 
-" if !has("gui_running")
-" 	let g:rehash256 = 1
-" endif
-
-" colorscheme molokai
+" default colour scheme
 colorscheme xoria256
 
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-		" Disable scrollbars (real hackers don't use scrollbars for navigation!)
-		set guioptions-=r
-		set guioptions-=R
-		set guioptions-=l
-		set guioptions-=L
-endif
-
 " Set Font
-set guifont=droid\ sans\ mono\ for\ powerline
+" set guifont=droid\ sans\ mono\ for\ powerline
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -178,7 +163,6 @@ set noswapfile
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -209,10 +193,6 @@ set si "Smart indent
 map j gj
 map k gk
 
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
-
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -235,64 +215,14 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap VIM 0 to first non-blank character
-map 0 ^
-
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
-
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-
-" Do not need it because python-mode plugin
-" autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
-
-
-" Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Quickly open a buffer for scripbble
-map <leader>q :e ~/buffer<cr>
-
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Visual mode related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :call VisualSelection('f', '')<CR>
-vnoremap <silent> # :call VisualSelection('b', '')<CR>
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " =><leader> mapping
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Fast saving
 nmap <leader>w :w!<cr>
+
+" Fast quit
+nmap <leader>q :q!<cr>
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader>, :noh<cr>
@@ -317,8 +247,6 @@ map <S-h> :tabp<cr>
 map <S-l> :tabn<cr>
 map <S-t> :tabnew<cr>
 map <S-w> :tabclose<cr>
-
-vmap <S-y> :y+<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -430,20 +358,13 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => bufExplorer plugin
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='name'
-map <leader>o :BufExplorer<cr>
+" Highlight matching words after 500ms
+let g:HiCursorWords_delay = 500 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CTRL-P MRU plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>f :CtrlPMRU<CR>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CTRL-P
@@ -455,14 +376,6 @@ map <c-b> :CtrlPBuffer<cr>
 
 let g:ctrlp_max_height = 15
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => ZenCoding
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable all functions in all modes
-let g:user_zen_mode='a'
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
