@@ -19,7 +19,6 @@ call pathogen#infect()
 " Add the docs
 call pathogen#helptags()
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -318,6 +317,8 @@ map <S-h> :tabp<cr>
 map <S-l> :tabn<cr>
 map <S-t> :tabnew<cr>
 map <S-w> :tabclose<cr>
+
+vmap <S-y> :y+<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
