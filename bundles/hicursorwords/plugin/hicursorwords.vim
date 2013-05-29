@@ -82,11 +82,6 @@ function! s:HiCursorWords__getWordUnderTheCursor(linestr, linenum, colnum)
 endfunction
 
 function! s:HiCursorWords__execute()
-    if exists("w:HiCursorWords__matchId")
-        call matchdelete(w:HiCursorWords__matchId)
-        unlet w:HiCursorWords__matchId
-    endif
-
     let linestr = getline('.')
     let linenum = line('.')
     let colnum = col('.')
@@ -108,6 +103,12 @@ endfunction
 function! s:HiCursorWords__startHilighting()
     let b:HiCursorWords__oldUpdatetime = &updatetime
     let &updatetime = g:HiCursorWords_delay
+    
+    if exists("w:HiCursorWords__matchId")
+        call matchdelete(w:HiCursorWords__matchId)
+        unlet w:HiCursorWords__matchId
+    endif
+    
     augroup HiCursorWordsUpdate
         autocmd!
         autocmd CursorHold,CursorHoldI  *

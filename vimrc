@@ -359,7 +359,7 @@ endfunction
 
 
 " Highlight matching words after 500ms
-let g:HiCursorWords_delay = 500 
+let g:HiCursorWords_delay = 1000 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CTRL-P MRU plugin
