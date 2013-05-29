@@ -82,6 +82,12 @@ function! s:HiCursorWords__getWordUnderTheCursor(linestr, linenum, colnum)
 endfunction
 
 function! s:HiCursorWords__execute()
+    if exists('s:HiCursorWords__jsHintDisabled')
+        let g:JSHintDisabled = s:HiCursorWords__jsHintDisabled
+    else
+        let g:JSHintDisabled = 0
+    endif
+
     let linestr = getline('.')
     let linenum = line('.')
     let colnum = col('.')
@@ -101,6 +107,12 @@ function! s:HiCursorWords__execute()
 endfunction
 
 function! s:HiCursorWords__startHilighting()
+    if exists('s:JSHintDisabled')
+        let s:HiCursorWords__jsHintDisabled = g:JSHintDisabled
+    endif
+    
+    let g:JSHintDisabled = 1 " conflicts with JSHint
+    
     let b:HiCursorWords__oldUpdatetime = &updatetime
     let &updatetime = g:HiCursorWords_delay
     
