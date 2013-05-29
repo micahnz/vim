@@ -5,7 +5,7 @@ set nocp
 " And pathogen.vim is available to us.
 " set runtimepath+=~/.vim_runtime
 
-set rtp+=~/.local/lib/python/site-packages/powerline/bindings/vim
+set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim
 
 " colour support
 if $COLORTERM == 'gnome-terminal'
@@ -65,6 +65,9 @@ set listchars=tab:\|-,trail:-
 
 " Turn on the WiLd menu
 set wildmenu
+
+" Use mosue
+set mouse=a
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
@@ -197,7 +200,7 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
+" set wrap "Wrap lines
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -310,8 +313,11 @@ map <leader>tj :tabnext
 map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 
-map <C-t> :tabnew<cr>
-map <C-w> :tabclose<cr>
+" tab nav using shift + nav keys
+map <S-h> :tabp<cr>
+map <S-l> :tabn<cr>
+map <S-t> :tabnew<cr>
+map <S-w> :tabclose<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
