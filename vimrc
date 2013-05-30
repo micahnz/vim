@@ -357,6 +357,8 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
+" put cursor between on enter
+let g:delimitMate_expand_cr = 1
 
 " Highlight matching words after 500ms
 let g:HiCursorWords_delay = 500 

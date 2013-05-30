@@ -1,3 +1,6 @@
+ysiw" //create surround inside word, wrap word with "
+cs"' //change surround " with ', replace " with '
+
 :e filename //open file
 :tabe/tabedit filename //open file in new tab
 

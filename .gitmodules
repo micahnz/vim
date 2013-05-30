@@ -31,3 +31,6 @@
 [submodule "bundles/vim-fugitive"]
 	path = bundles/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+[submodule "bundles/delimit-mate"]
+	path = bundles/delimit-mate
+	url = https://github.com/Raimondi/delimitMate.git
