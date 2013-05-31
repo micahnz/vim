@@ -6,7 +6,7 @@ set nocp
 " set runtimepath+=~/.vim_runtime
 
 " powerline
-set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim
+" set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim
 
 " colour support
 if $COLORTERM == 'gnome-terminal'
@@ -342,4 +342,63 @@ map <c-p> :NERDTreeToggle<cr>
 hi SpecialKey   ctermfg=235 ctermbg=234
 hi NonText      ctermfg=235 ctermbg=234
 hi ExtraWhitespace ctermfg=236 ctermbg=235
-match ExtraWhitespace /^\ \+\|\s\ \+/
+
+" Highlight whitespace problems.
+" flags is '' to clear highlighting, or is a string to
+" specify what to highlight (one or more characters):
+"   e  whitespace at end of line
+"   i  spaces used for indenting
+"   s  spaces before a tab
+"   t  tabs not at start of line
+function! ShowWhitespace(flags)
+  let bad = ''
+  let pat = []
+  for c in split(a:flags, '\zs')
+    if c == 'e'
+      call add(pat, '\s\+$')
+    elseif c == 'i'
+      call add(pat, '^\t*\zs \+')
+    elseif c == 's'
+      call add(pat, ' \+\ze\t')
+    elseif c == 't'
+      call add(pat, '[^\t]\zs\t\+')
+    else
+      let bad .= c
+    endif
+  endfor
+  if len(pat) > 0
+    let s = join(pat, '\|')
+    exec 'syntax match ExtraWhitespace "'.s.'" containedin=ALL'
+  else
+    syntax clear ExtraWhitespace
+  endif
+  if len(bad) > 0
+    echo 'ShowWhitespace ignored: '.bad
+  endif
+endfunction
+
+let s:ws_flags = 'eist'
+
+function! ToggleShowWhitespace()
+  if !exists('s:ws_show')
+    let s:ws_show = 0
+  endif
+  if !exists('s:ws_flags')
+    let s:ws_flags = 'est'  " default (which whitespace to show)
+  endif
+  let s:ws_show = !s:ws_show
+  if s:ws_show
+    call ShowWhitespace(s:ws_flags)
+  else
+    call ShowWhitespace('')
+  endif
+endfunction
+
+nnoremap <leader>ws :call ToggleShowWhitespace()<CR>
+
+silent !echo -ne "\033]12;white\007"
+
+au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
