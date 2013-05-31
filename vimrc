@@ -309,6 +309,18 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
+" imap <c-z> <Esc>ui
+" imap <c-y> <Esc><cr>i
+
+" quick save from insert mode
+imap <c-w> <Esc>:w<cr>i
+
+" quick undo/redo
+imap <c-u> <Esc>:undo<cr>i
+imap <c-r> <Esc>:redo<cr>i
+
+" quick paste
+imap <c-p> <Esc>p<cr>i
 
 " put cursor between on enter
 let g:delimitMate_expand_cr = 1
