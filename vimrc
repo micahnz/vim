@@ -342,6 +342,7 @@ map <c-p> :NERDTreeToggle<cr>
 hi SpecialKey   ctermfg=235 ctermbg=234
 hi NonText      ctermfg=235 ctermbg=234
 hi ExtraWhitespace ctermfg=236 ctermbg=235
+hi MatchUnderCursor cterm=underline
 
 " Highlight whitespace problems.
 " flags is '' to clear highlighting, or is a string to
@@ -396,6 +397,10 @@ endfunction
 
 nnoremap <leader>ws :call ToggleShowWhitespace()<CR>
 
+" double click for insert mode
+nnoremap <2-LeftMouse> <ESC>i
+
+" adds cursor functionality to gnome terminal
 silent !echo -ne "\033]12;white\007"
 
 au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
