@@ -57,11 +57,10 @@ set incsearch
 " Show command typed
 set showcmd
 
-" No wrap
-set nowrap
+" Show whitespace characters
+set list
 
-" set list then display tab and space as characters
-set listchars=tab:\|-,trail:-
+set listchars=tab:»\ ,nbsp:·,trail:·,eol:¶,extends:›,precedes:‹
 
 " Turn on the WiLd menu
 set wildmenu
@@ -72,15 +71,6 @@ set mouse=a
 " Share system clipboard
 set clipboard=unnamedplus
 
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-else
-    set wildignore+=.git\*,.hg\*,.svn\*
-endif
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -89,9 +79,6 @@ set so=10
 
 "Always show current position
 set ruler
-
-" Add a bit extra margin to the left
-set foldcolumn=1
 
 " Show line number
 set nu
@@ -129,10 +116,10 @@ map <silent><F2> :PREVCOLOR<cr>
 " => Status line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Always show the status line
-set laststatus=2
+" set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+" set statusline=\%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -300,41 +287,6 @@ cnoremap <C-N> <Down>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction 
-
-function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.' . a:extra_filter)
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
-endfunction
-
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 
@@ -357,6 +309,7 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
+
 " put cursor between on enter
 let g:delimitMate_expand_cr = 1
 
@@ -372,12 +325,9 @@ map <leader>f :CtrlPMRU<CR>
 " => CTRL-P
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 0
-
 let g:ctrlp_map = '<c-f>'
 map <c-b> :CtrlPBuffer<cr>
-
 let g:ctrlp_max_height = 15
-let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
@@ -386,3 +336,10 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark 
 map <leader>nf :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
+map <c-p> :NERDTreeToggle<cr>
+
+" Softer colours for whitespace stuff
+hi SpecialKey   ctermfg=235 ctermbg=234
+hi NonText      ctermfg=235 ctermbg=234
+hi ExtraWhitespace ctermfg=236 ctermbg=235
+match ExtraWhitespace /^\ \+\|\s\ \+/
