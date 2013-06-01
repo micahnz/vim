@@ -101,6 +101,8 @@ set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
+set colorcolumn=100
+
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
@@ -355,6 +357,7 @@ hi SpecialKey   ctermfg=235 ctermbg=234
 hi NonText      ctermfg=235 ctermbg=234
 hi ExtraWhitespace ctermfg=236 ctermbg=235
 hi MatchUnderCursor cterm=underline
+hi colorcolumn ctermbg=233
 
 " Highlight whitespace problems.
 " flags is '' to clear highlighting, or is a string to
@@ -412,9 +415,19 @@ nnoremap <leader>ws :call ToggleShowWhitespace()<CR>
 " double click for insert mode
 nnoremap <2-LeftMouse> <ESC>i
 
-" adds cursor functionality to gnome terminal
-silent !echo -ne "\033]12;white\007"
+" opens vim with red cursor
+silent !echo -ne "\033]12;red\007"
 
+" use white cursor for insert mode
+let &t_SI = "\<Esc>]12;white\x7"
+
+" use a red cursor otherwise
+let &t_EI = "\<Esc>]12;red\x7"
+
+" Restore terminal cusor color to white
+
+au VimLeave * silent !echo -ne "\033]12;white\007"
+" change cursor shape for gnome-terminal
 au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
 au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
