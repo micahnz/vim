@@ -172,8 +172,9 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-" set wrap "Wrap lines
 
+" set wrap "Wrap lines
+set nowrap
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -315,7 +316,8 @@ endfunction
 " imap <c-y> <Esc><cr>i
 
 " quick save from insert mode
-imap <c-w> <Esc>:w<cr>i
+" imap <c-w> <Esc>:w<cr>i
+" nmap <c-w> :w<cr>
 
 " quick undo/redo
 imap <c-u> <Esc>:undo<cr>i
