@@ -240,6 +240,10 @@ vmap <Delete> "_d
 " Black hole delete
 nmap <Delete> "_x
 
+map <leader>y :!xclip -f -sel clip<cr>
+map <leader>p :-1r !xclip -o -sel clip<cr>
+" map y :y<cr>
+
 " Fast editing and reloading of vimrc configs
 map <leader>e :e! ~/.vimrc<cr>
 
