@@ -234,7 +234,15 @@ map <C-Right> :tabn<cr>
 map <C-t> :tabnew<cr>
 map <C-w> :tabclose<cr>
 
+" Black hole delete
+vmap <Delete> "_d
+
+" Black hole delete
+nmap <Delete> "_x
+
 " Fast editing and reloading of vimrc configs
+map <leader>e :e! ~/.vimrc<cr>
+
 map <leader>e :e! ~/.vimrc<cr>
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
