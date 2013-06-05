@@ -34,3 +34,6 @@
 [submodule "bundles/delimit-mate"]
 	path = bundles/delimit-mate
 	url = https://github.com/Raimondi/delimitMate.git
+[submodule "bundles/dir-diff"]
+	path = bundles/dir-diff
+	url = https://github.com/vim-scripts/DirDiff.vim.git
