@@ -113,7 +113,6 @@ set tm=500
 map <silent><F3> :NEXTCOLOR<cr>
 map <silent><F2> :PREVCOLOR<cr>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Status line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -190,10 +189,10 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Smart way to move windows around
-map <C-H> <C-W>H
-map <C-J> <C-W>J
-map <C-K> <C-W>K
-map <C-L> <C-W>L
+map <S-h> <C-W>H
+map <S-j> <C-W>J
+map <S-k> <C-W>K
+map <S-l> <C-W>L
 
 " Specify the behavior when switching between buffers 
 try
@@ -229,27 +228,11 @@ map <leader>bc :Bclose<cr>
 " Close all the buffers
 map <leader>ba :1,1000 bc!<cr>
 
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>tj :tabnext
-map <leader>tf :tabfirst<cr>
-map <leader>tl :tablast<cr>
-
 " tab nav using shift + nav keys
-map <S-h> :tabp<cr>
-map <S-l> :tabn<cr>
-map <S-t> :tabnew<cr>
-map <S-w> :tabclose<cr>
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+map <C-Left> :tabp<cr>
+map <C-Right> :tabn<cr>
+map <C-t> :tabnew<cr>
+map <C-w> :tabclose<cr>
 
 " Fast editing and reloading of vimrc configs
 map <leader>e :e! ~/.vimrc<cr>
@@ -265,7 +248,6 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on 
