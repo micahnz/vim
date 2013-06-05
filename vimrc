@@ -189,6 +189,12 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Smart way to move windows around
+map <C-H> <C-W>H
+map <C-J> <C-W>J
+map <C-K> <C-W>K
+map <C-L> <C-W>L
+
 " Specify the behavior when switching between buffers 
 try
   set switchbuf=useopen,usetab,newtab
@@ -279,14 +285,6 @@ endtry
 cno $h e ~/
 cno $d e ~/Desktop/
 
-" Bash like keys for the command line
-cnoremap <C-A> <Home>
-cnoremap <C-E> <End>
-cnoremap <C-K> <C-U>
-cnoremap <C-P> <Up>
-cnoremap <C-N> <Down>
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -312,20 +310,6 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-" imap <c-z> <Esc>ui
-" imap <c-y> <Esc><cr>i
-
-" quick save from insert mode
-" imap <c-w> <Esc>:w<cr>i
-" nmap <c-w> :w<cr>
-
-" quick undo/redo
-imap <c-u> <Esc>:undo<cr>i
-imap <c-r> <Esc>:redo<cr>i
-
-" quick paste
-imap <c-p> <Esc>p<cr>i
-
 " put cursor between on enter
 let g:delimitMate_expand_cr = 1
 
@@ -335,7 +319,7 @@ let g:HiCursorWords_delay = 500
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CTRL-P MRU plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>f :CtrlPMRU<CR>
+map <c-p> :CtrlPMRU<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CTRL-P
@@ -352,7 +336,7 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark 
 map <leader>nf :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
-map <c-p> :NERDTreeToggle<cr>
+map <c-n> :NERDTreeToggle<cr>
 
 " Softer colours for whitespace stuff
 hi SpecialKey   ctermfg=235 ctermbg=234
@@ -413,9 +397,10 @@ function! ToggleShowWhitespace()
 endfunction
 
 nnoremap <leader>ws :call ToggleShowWhitespace()<CR>
+nnoremap <leader>ws :call ToggleShowWhitespace()<CR>
 
 " double click for insert mode
-nnoremap <2-LeftMouse> <ESC>i
+nmap <2-LeftMouse> <ESC>i
 
 " opens vim with red cursor
 silent !echo -ne "\033]12;red\007"
@@ -427,8 +412,8 @@ let &t_SI = "\<Esc>]12;white\x7"
 let &t_EI = "\<Esc>]12;red\x7"
 
 " Restore terminal cusor color to white
-
 au VimLeave * silent !echo -ne "\033]12;white\007"
+
 " change cursor shape for gnome-terminal
 au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
 au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
