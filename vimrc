@@ -60,6 +60,7 @@ set showcmd
 " Show whitespace characters
 set list
 
+" Custom whitespace characters
 set listchars=tab:»\ ,nbsp:·,trail:·,eol:¶,extends:›,precedes:‹
 
 " Turn on the WiLd menu
@@ -101,7 +102,11 @@ set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
+" Show column line at 100 chars
 set colorcolumn=100
+
+" Only show tabline if there is more than one buffer open
+set showtabline=1
 
 " No annoying sound on errors
 set noerrorbells
@@ -374,19 +379,21 @@ endfunction
 
 let s:ws_flags = 'eist'
 
+au BufEnter <buffer> call ShowWhitespace(s:ws_flags)
+
 function! ToggleShowWhitespace()
-  if !exists('s:ws_show')
-    let s:ws_show = 0
-  endif
-  if !exists('s:ws_flags')
-    let s:ws_flags = 'est'  " default (which whitespace to show)
-  endif
-  let s:ws_show = !s:ws_show
-  if s:ws_show
-    call ShowWhitespace(s:ws_flags)
-  else
-    call ShowWhitespace('')
-  endif
+if !exists('s:ws_show')
+let s:ws_show = 0
+endif
+if !exists('s:ws_flags')
+let s:ws_flags = 'est'  " default (which whitespace to show)
+endif
+let s:ws_show = !s:ws_show
+if s:ws_show
+call ShowWhitespace(s:ws_flags)
+else
+call ShowWhitespace('')
+endif
 endfunction
 
 nnoremap <leader>ws :call ToggleShowWhitespace()<CR>
