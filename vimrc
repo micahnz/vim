@@ -189,10 +189,10 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Smart way to move windows around
-map <S-h> <C-W>H
-map <S-j> <C-W>J
-map <S-k> <C-W>K
-map <S-l> <C-W>L
+"map <S-h> <C-W>H
+"map <S-j> <C-W>J
+"map <S-k> <C-W>K
+"map <S-l> <C-W>L
 
 " Specify the behavior when switching between buffers 
 try
@@ -245,8 +245,6 @@ map <leader>p :-1r !xclip -o -sel clip<cr>
 " map y :y<cr>
 
 " Fast editing and reloading of vimrc configs
-map <leader>e :e! ~/.vimrc<cr>
-
 map <leader>e :e! ~/.vimrc<cr>
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
@@ -332,6 +330,7 @@ map <leader>nf :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
 map <c-n> :NERDTreeToggle<cr>
 
+
 " Softer colours for whitespace stuff
 hi SpecialKey   ctermfg=235 ctermbg=234
 hi NonText      ctermfg=235 ctermbg=234
@@ -390,7 +389,6 @@ function! ToggleShowWhitespace()
   endif
 endfunction
 
-nnoremap <leader>ws :call ToggleShowWhitespace()<CR>
 nnoremap <leader>ws :call ToggleShowWhitespace()<CR>
 
 " double click for insert mode
