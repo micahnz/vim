@@ -108,6 +108,9 @@ set colorcolumn=100
 " Only show tabline if there is more than one buffer open
 set showtabline=1
 
+" Specify the behavior when switching between buffers 
+set switchbuf=useopen,usetab,newtab
+
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
@@ -117,6 +120,7 @@ set tm=500
 " Scroll Color
 map <silent><F3> :NEXTCOLOR<cr>
 map <silent><F2> :PREVCOLOR<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Status line
@@ -166,7 +170,7 @@ set noexpandtab
 " Be smart when using tabs ;)
 set smarttab
 
-" 1 tab == 2 spaces
+" 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
 
@@ -198,13 +202,6 @@ map <C-l> <C-W>l
 "map <S-j> <C-W>J
 "map <S-k> <C-W>K
 "map <S-l> <C-W>L
-
-" Specify the behavior when switching between buffers 
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
