@@ -16,28 +16,26 @@ endif
 let s:install_dir = expand('<sfile>:p:h')
 
 au BufLeave <buffer> call s:JSHintClear()
-
 au BufEnter <buffer> call s:JSHint()
-au InsertLeave <buffer> call s:JSHint()
+
+"au InsertLeave <buffer> call s:JSHint()
 "au InsertEnter <buffer> call s:JSHint()
+
 au BufWritePost <buffer> call s:JSHint()
 
 " due to http://tech.groups.yahoo.com/group/vimdev/message/52115
-if(!has("win32") || v:version>702)
-  au CursorHold <buffer> call s:JSHint()
-  au CursorHoldI <buffer> call s:JSHint()
+" if(!has("win32") || v:version>702)
 
-  au CursorHold <buffer> call s:GetJSHintMessage()
-endif
+"au CursorHold <buffer> call s:JSHint()
+"au CursorHoldI <buffer> call s:JSHint()
+"au CursorHold <buffer> call s:GetJSHintMessage()
+
+"endif
 
 au CursorMoved <buffer> call s:GetJSHintMessage()
 
 if !exists("g:JSHintHighlightErrorLine")
   let g:JSHintHighlightErrorLine = 1
-endif
-
-if !exists("g:JSHintDisabled")
-	let g:JSHintDisabled = 0;
 endif
 
 if !exists("*s:JSHintUpdate")
@@ -47,17 +45,40 @@ if !exists("*s:JSHintUpdate")
   endfunction
 endif
 
+if !exists("*s:JSHintEnable")
+  function s:JSHintEnable()
+    let b:jshint_disabled = 0
+    silent call s:JSHintUpdate()
+  endfunction
+endif
+
+if !exists("*s:JSHintDisable")
+  function s:JSHintDisable()
+    silent call s:JSHintClear()
+    let b:jshint_disabled = 1
+  endfunction
+endif
+
 if !exists(":JSHintUpdate")
   command JSHintUpdate :call s:JSHintUpdate()
 endif
-if !exists(":JSHintToggle")
-  command JSHintToggle :let g:JSHintDisabled = exists('g:JSHintDisabled') ? g:JSHintDisabled ? 0 : 1 : 1
+
+if !exists(":JSHintClear")
+  command JSHintClear :call s:JSHintClear()
 endif
 
-noremap <buffer><silent> dd dd:JSHintUpdate<CR>
-noremap <buffer><silent> dw dw:JSHintUpdate<CR>
-noremap <buffer><silent> u u:JSHintUpdate<CR>
-noremap <buffer><silent> <C-R> <C-R>:JSHintUpdate<CR>
+if !exists(":JSHintEnable")
+  command JSHintEnable :call s:JSHintEnable()
+endif
+
+if !exists(":JSHintDisable")
+  command JSHintDisable :call s:JSHintDisable()
+endif
+
+"noremap <buffer><silent> dd dd:JSHintUpdate<CR>
+"noremap <buffer><silent> dw dw:JSHintUpdate<CR>
+"noremap <buffer><silent> u u:JSHintUpdate<CR>
+"noremap <buffer><silent> <C-R> <C-R>:JSHintUpdate<CR>
 
 " Set up command and parameters
 
@@ -86,7 +107,7 @@ endif
 
 
 function! s:JSHintClear()
-  if exists("g:JSHintDisabled") && g:JSHintDisabled == 1
+  if exists("b:jshint_disabled") && b:jshint_disabled == 1
     return
   endif
     
@@ -103,7 +124,7 @@ function! s:JSHintClear()
 endfunction
 
 function! s:JSHint()
-  if exists("g:JSHintDisabled") && g:JSHintDisabled == 1
+  if exists("b:jshint_disabled") && b:jshint_disabled == 1
     return
   endif
 
@@ -144,7 +165,7 @@ function! s:JSHint()
   let b:jshint_output = system(s:cmd, lines . "\n")
   if v:shell_error
     echoerr 'could not invoke JSHint!'
-    let g:JSHintDisabled = 1
+    let b:jshint_disabled = 1
   end
 
   for error in split(b:jshint_output, "\n")
