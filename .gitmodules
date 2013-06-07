@@ -28,3 +28,6 @@
 [submodule "bundles/dir-diff"]
 	path = bundles/dir-diff
 	url = https://github.com/vim-scripts/DirDiff.vim.git
+[submodule "bundles/jshint.vim"]
+	path = bundles/jshint.vim
+	url = git@github.com:michaelmitchell/jshint.vim.git
