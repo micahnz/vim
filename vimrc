@@ -198,10 +198,10 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Smart way to move windows around
-"map <S-h> <C-W>H
-"map <S-j> <C-W>J
-"map <S-k> <C-W>K
-"map <S-l> <C-W>L
+map <S-h> <C-W>H
+map <S-j> <C-W>J
+map <S-k> <C-W>K
+map <S-l> <C-W>L
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -233,8 +233,8 @@ map <leader>ba :1,1000 bc!<cr>
 " tab nav using shift + nav keys
 map <C-Left> :tabp<cr>
 map <C-Right> :tabn<cr>
-map <C-t> :tabnew<cr>
-map <C-w> :tabclose<cr>
+map <C-t>n :tabnew<cr>
+map <C-t>c :tabclose<cr>
 
 " Black hole delete
 vmap <Delete> "_d
