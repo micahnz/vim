@@ -1,5 +1,5 @@
 "No compatible
-set nocp
+se nocp
 
 " Add vim bundle to runtimepath
 " And pathogen.vim is available to us.
@@ -67,7 +67,10 @@ set listchars=tab:»\ ,nbsp:·,trail:·,eol:¶,extends:›,precedes:‹
 set wildmenu
 
 " Use mosue
-set mouse=a
+" set mouse=a
+
+" double click for insert mode
+" nmap <2-LeftMouse> <ESC>i
 
 " Share system clipboard
 set clipboard=unnamedplus
@@ -117,21 +120,6 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Scroll Color
-map <silent><F3> :NEXTCOLOR<cr>
-map <silent><F2> :PREVCOLOR<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Status line
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Always show the status line
-" set laststatus=2
-
-" Format the status line
-" set statusline=\%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -143,9 +131,6 @@ set background=dark
 
 " default colour scheme
 colorscheme xoria256
-
-" Set Font
-" set guifont=droid\ sans\ mono\ for\ powerline
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -191,18 +176,6 @@ set nowrap
 map j gj
 map k gk
 
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-" Smart way to move windows around
-map <S-h> <C-W>H
-map <S-j> <C-W>J
-map <S-k> <C-W>K
-map <S-l> <C-W>L
-
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -211,6 +184,10 @@ autocmd BufReadPost *
 
 " Remember info about open buffers on close
 set viminfo^=%
+
+" Black hole delete
+vmap <Delete> "_d
+nmap <Delete> "_x
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " =><leader> mapping
@@ -230,21 +207,9 @@ map <leader>bc :Bclose<cr>
 " Close all the buffers
 map <leader>ba :1,1000 bc!<cr>
 
-" tab nav using shift + nav keys
-map <C-Left> :tabp<cr>
-map <C-Right> :tabn<cr>
-map <C-t>n :tabnew<cr>
-map <C-t>c :tabclose<cr>
-
-" Black hole delete
-vmap <Delete> "_d
-
-" Black hole delete
-nmap <Delete> "_x
-
+" system clipboard
 map <leader>y :!xclip -f -sel clip<cr>
 map <leader>p :-1r !xclip -o -sel clip<cr>
-" map y :y<cr>
 
 " Fast editing and reloading of vimrc configs
 map <leader>e :e! ~/.vimrc<cr>
@@ -265,62 +230,23 @@ map <leader>s? z=
 " => Turn persistent undo on 
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-try
-    set undodir=~/.vim/temp_dirs/undodir
-    set undofile
-catch
-endtry
-
+set undodir=~/.vim/temp_dirs/undodir
+set undofile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Command mode related
+" => DelimitMate plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Smart mappings on the command line
-cno $h e ~/
-cno $d e ~/Desktop/
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
-
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
-
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
-
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
-endfunction
 
 " put cursor between on enter
 let g:delimitMate_expand_cr = 1
-
-" Highlight matching words after 500ms
-let g:HiCursorWords_delay = 500 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => CTRL-P MRU plugin
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <c-p> :CtrlPMRU<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CTRL-P
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_map = '<c-f>'
-map <c-b> :CtrlPBuffer<cr>
+let g:ctrlp_map = '<c-p>'
+map <c-p>b :CtrlPBuffer<cr>
+map <c-p>m :CtrlPMRU<cr>
 let g:ctrlp_max_height = 15
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -331,7 +257,6 @@ map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
 map <c-n> :NERDTreeToggle<cr>
-
 
 " Softer colours for whitespace stuff
 hi SpecialKey   ctermfg=235 ctermbg=234
@@ -347,6 +272,8 @@ hi colorcolumn ctermbg=233
 "   i  spaces used for indenting
 "   s  spaces before a tab
 "   t  tabs not at start of line
+let s:ws_flags = 'eist'
+
 function! ShowWhitespace(flags)
   let bad = ''
   let pat = []
@@ -374,32 +301,47 @@ function! ShowWhitespace(flags)
   endif
 endfunction
 
-let s:ws_flags = 'eist'
-
-au BufEnter <buffer> call ShowWhitespace(s:ws_flags)
-
 function! ToggleShowWhitespace()
-if !exists('s:ws_show')
-let s:ws_show = 0
-endif
-if !exists('s:ws_flags')
-let s:ws_flags = 'est'  " default (which whitespace to show)
-endif
-let s:ws_show = !s:ws_show
-if s:ws_show
-call ShowWhitespace(s:ws_flags)
-else
-call ShowWhitespace('')
-endif
+	if !exists('s:ws_show')
+		let s:ws_show = 0
+	endif
+
+	if !exists('s:ws_flags')
+		let s:ws_flags = 'est'  " default (which whitespace to show)
+	endif
+
+	let s:ws_show = !s:ws_show
+
+	if s:ws_show
+		call ShowWhitespace(s:ws_flags)
+	else
+		call ShowWhitespace('')
+	endif
 endfunction
 
 nnoremap <leader>ws :call ToggleShowWhitespace()<CR>
+au BufEnter <buffer> call ShowWhitespace(s:ws_flags)
 
-" double click for insert mode
-nmap <2-LeftMouse> <ESC>i
+" lowercase s for surround.vim
+vmap s S
 
 " opens vim with red cursor
 silent !echo -ne "\033]12;red\007"
+
+function! FixNCursor()
+	silent !echo -ne "\033]12;red\007"
+	redraw!
+endfunction
+
+function! FixICursor()
+	silent !echo -ne "\033]12;white\007"
+	redraw!
+endfunction
+
+nmap <silent> <c-l> :call FixNCursor()<cr>
+imap <silent> <c-l> <esc>:call FixICursor()<cr>i
+
+" Cursor stuff
 
 " use white cursor for insert mode
 let &t_SI = "\<Esc>]12;white\x7"
@@ -415,3 +357,10 @@ au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-te
 au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
 au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+
+" Disable arrow keys
+for prefix in ['i', 'n', 'v']
+  for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+    exe prefix . "noremap " . key . " <Nop>"
+  endfor
+endfor
