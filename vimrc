@@ -135,6 +135,13 @@ colorscheme xoria256
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
+" Softer colours for whitespace stuff
+hi SpecialKey   ctermfg=235 ctermbg=234
+hi NonText      ctermfg=235 ctermbg=234
+hi ExtraWhitespace ctermfg=236 ctermbg=235
+hi MatchUnderCursor cterm=underline
+hi colorcolumn ctermbg=233
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -234,13 +241,6 @@ set undodir=~/.vim/temp_dirs/undodir
 set undofile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => DelimitMate plugin
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" put cursor between on enter
-let g:delimitMate_expand_cr = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CTRL-P
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 0
@@ -252,81 +252,13 @@ let g:ctrlp_max_height = 15
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark 
-map <leader>nf :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
 map <c-n> :NERDTreeToggle<cr>
-
-" Softer colours for whitespace stuff
-hi SpecialKey   ctermfg=235 ctermbg=234
-hi NonText      ctermfg=235 ctermbg=234
-hi ExtraWhitespace ctermfg=236 ctermbg=235
-hi MatchUnderCursor cterm=underline
-hi colorcolumn ctermbg=233
-
-" Highlight whitespace problems.
-" flags is '' to clear highlighting, or is a string to
-" specify what to highlight (one or more characters):
-"   e  whitespace at end of line
-"   i  spaces used for indenting
-"   s  spaces before a tab
-"   t  tabs not at start of line
-let s:ws_flags = 'eist'
-
-function! ShowWhitespace(flags)
-  let bad = ''
-  let pat = []
-  for c in split(a:flags, '\zs')
-    if c == 'e'
-      call add(pat, '\s\+$')
-    elseif c == 'i'
-      call add(pat, '^\t*\zs \+')
-    elseif c == 's'
-      call add(pat, ' \+\ze\t')
-    elseif c == 't'
-      call add(pat, '[^\t]\zs\t\+')
-    else
-      let bad .= c
-    endif
-  endfor
-  if len(pat) > 0
-    let s = join(pat, '\|')
-    exec 'syntax match ExtraWhitespace "'.s.'" containedin=ALL'
-  else
-    syntax clear ExtraWhitespace
-  endif
-  if len(bad) > 0
-    echo 'ShowWhitespace ignored: '.bad
-  endif
-endfunction
-
-function! ToggleShowWhitespace()
-	if !exists('s:ws_show')
-		let s:ws_show = 0
-	endif
-
-	if !exists('s:ws_flags')
-		let s:ws_flags = 'est'  " default (which whitespace to show)
-	endif
-
-	let s:ws_show = !s:ws_show
-
-	if s:ws_show
-		call ShowWhitespace(s:ws_flags)
-	else
-		call ShowWhitespace('')
-	endif
-endfunction
-
-nnoremap <leader>ws :call ToggleShowWhitespace()<CR>
-au BufEnter <buffer> call ShowWhitespace(s:ws_flags)
 
 " lowercase s for surround.vim
 vmap s S
 
 " Cursor stuff
-
 " opens vim with red cursor
 silent !echo -ne "\033]12;red\007"
 
@@ -358,7 +290,7 @@ au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-te
 au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
 au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 
-" Disable arrow keys
+" Disable arrow keys to break bad habbits
 for prefix in ['i', 'n', 'v']
   for key in ['<Up>', '<Down>', '<Left>', '<Right>']
     exe prefix . "noremap " . key . " <Nop>"
