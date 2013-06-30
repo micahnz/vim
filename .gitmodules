@@ -40,3 +40,6 @@
 [submodule "bundles/snippets"]
 	path = bundles/snippets
 	url = git@github.com:michaelmitchell/snippets.git
+[submodule "bundles/dir-diff"]
+	path = bundles/dir-diff
+	url = git@github.com:michaelmitchell/DirDiff.vim.git
