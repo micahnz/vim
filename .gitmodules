@@ -1,33 +1,24 @@
 [submodule "bundles/xoria256"]
 	path = bundles/xoria256
 	url = git://github.com/vim-scripts/xoria256.vim.git
-[submodule "bundles/vim-surround"]
-	path = bundles/vim-surround
+[submodule "bundles/surround"]
+	path = bundles/surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "bundles/vim-repeat"]
-	path = bundles/vim-repeat
+[submodule "bundles/repeat"]
+	path = bundles/repeat
 	url = git://github.com/tpope/vim-repeat.git
-[submodule "bundles/vim-easymotion"]
-	path = bundles/vim-easymotion
+[submodule "bundles/easymotion"]
+	path = bundles/easymotion
 	url = https://github.com/Lokaltog/vim-easymotion.git
 [submodule "bundles/nerdtree"]
 	path = bundles/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "bundles/scroll-colors"]
-	path = bundles/scroll-colors
-	url = git://github.com/vim-scripts/ScrollColors.git
-[submodule "bundles/ctrlp.vim"]
-	path = bundles/ctrlp.vim
+[submodule "bundles/ctrlp"]
+	path = bundles/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
-[submodule "bundles/vim-fugitive"]
-	path = bundles/vim-fugitive
+[submodule "bundles/fugitive"]
+	path = bundles/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
-[submodule "bundles/delimit-mate"]
-	path = bundles/delimit-mate
-	url = https://github.com/Raimondi/delimitMate.git
-[submodule "bundles/dir-diff"]
-	path = bundles/dir-diff
-	url = https://github.com/vim-scripts/DirDiff.vim.git
-[submodule "bundles/jshint.vim"]
-	path = bundles/jshint.vim
+[submodule "bundles/jshint"]
+	path = bundles/jshint
 	url = git@github.com:michaelmitchell/jshint.vim.git
