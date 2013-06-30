@@ -37,3 +37,6 @@
 [submodule "bundles/supertab"]
 	path = bundles/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "bundles/snippets"]
+	path = bundles/snippets
+	url = git@github.com:michaelmitchell/snippets.git

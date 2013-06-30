@@ -25,6 +25,11 @@ m{a-z} - create mark
 [/ - go to prev comment
 ]/ - go to next comment
 
+[c - diff back
+]c - diff forward
+do - diffget "obtain"
+dp - diffput
+
 f<char> - search line char forward
 F<char> - search line char backward
 t<char> - search before forward
