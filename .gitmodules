@@ -31,9 +31,6 @@
 [submodule "bundles/addon-mw-utils"]
 	path = bundles/addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule "bundles/snippets"]
-	path = bundles/snippets
-	url = https://github.com/honza/vim-snippets.git
 [submodule "bundles/gundo"]
 	path = bundles/gundo
 	url = https://github.com/sjl/gundo.vim.git
