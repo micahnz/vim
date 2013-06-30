@@ -1,0 +1,39 @@
+[submodule "bundles/xoria256"]
+	path = bundles/xoria256
+	url = git://github.com/vim-scripts/xoria256.vim.git
+[submodule "bundles/surround"]
+	path = bundles/surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "bundles/repeat"]
+	path = bundles/repeat
+	url = git://github.com/tpope/vim-repeat.git
+[submodule "bundles/easymotion"]
+	path = bundles/easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
+[submodule "bundles/nerdtree"]
+	path = bundles/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundles/ctrlp"]
+	path = bundles/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "bundles/fugitive"]
+	path = bundles/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "bundles/jshint"]
+	path = bundles/jshint
+	url = git@github.com:michaelmitchell/jshint.vim.git
+[submodule "bundles/snipmate"]
+	path = bundles/snipmate
+	url = https://github.com/garbas/vim-snipmate.git
+[submodule "bundles/tlib"]
+	path = bundles/tlib
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "bundles/addon-mw-utils"]
+	path = bundles/addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "bundles/snippets"]
+	path = bundles/snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule "bundles/gundo"]
+	path = bundles/gundo
+	url = https://github.com/sjl/gundo.vim.git

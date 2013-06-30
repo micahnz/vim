@@ -325,6 +325,8 @@ au BufEnter <buffer> call ShowWhitespace(s:ws_flags)
 " lowercase s for surround.vim
 vmap s S
 
+" Cursor stuff
+
 " opens vim with red cursor
 silent !echo -ne "\033]12;red\007"
 
@@ -340,8 +342,6 @@ endfunction
 
 nmap <silent> <c-l> :call FixNCursor()<cr>
 imap <silent> <c-l> <esc>:call FixICursor()<cr>i
-
-" Cursor stuff
 
 " use white cursor for insert mode
 let &t_SI = "\<Esc>]12;white\x7"
@@ -359,8 +359,8 @@ au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-termi
 au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 
 " Disable arrow keys
-for prefix in ['i', 'n', 'v']
-  for key in ['<Up>', '<Down>', '<Left>', '<Right>']
-    exe prefix . "noremap " . key . " <Nop>"
-  endfor
-endfor
+" for prefix in ['i', 'n', 'v']
+"   for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+"     exe prefix . "noremap " . key . " <Nop>"
+"   endfor
+" endfor
