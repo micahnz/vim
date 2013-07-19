@@ -1,15 +1,8 @@
 # Movements
 
-w - move forward word
-W - delimited forward
-b - move backward word
-B - delimited backward
-e - move forward end of word
-E = delimited end
-ge - backward end of word
-gE - delimited backward
+J - join lines
+gJ - join lines without space
 
-% - go to matching
 { - back paragraph
 } - forward paragraph
 ( - back sentence
@@ -37,9 +30,6 @@ T<char> - search before backward
 ; - prev
 , - next
 
-$ - end of line
-^ - start of line
-
 ctrl+u - scroll up half up
 ctrl+y - scroll up one line up
 ctrl+b - scroll up one screen
@@ -47,9 +37,7 @@ ctrl+d - scroll down half screen
 ctrl+e - scroll down one line
 ctrl+f - scroll down one screen
 
-<num>G - goto line
 ctrl+o - prev location
-tab - next location
 
 zb - cursor line at bottom
 zt - cusor line at top
@@ -74,9 +62,6 @@ cw - change word
 C - c$ - change to end of line
 s - cl - change one char
 S - cc - change line
-
-J - join lines
-gJ - join lines without space
 
 r - replace char
 R - replace mode
