@@ -67,13 +67,16 @@ set listchars=tab:»\ ,nbsp:·,trail:·,eol:¶,extends:›,precedes:‹
 set wildmenu
 
 " Use mosue
-" set mouse=a
+set mouse=a
 
 " double click for insert mode
-" nmap <2-LeftMouse> <ESC>i
+nmap <2-LeftMouse> <ESC>i
 
 " Share system clipboard
 set clipboard=unnamedplus
+
+" Better auto complete
+set completeopt=longest,menu
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
