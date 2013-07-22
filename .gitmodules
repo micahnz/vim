@@ -43,3 +43,6 @@
 [submodule "bundles/dir-diff"]
 	path = bundles/dir-diff
 	url = git@github.com:michaelmitchell/DirDiff.vim.git
+[submodule "bundles/ack"]
+	path = bundles/ack
+	url = https://github.com/mileszs/ack.vim.git
