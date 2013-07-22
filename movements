@@ -18,13 +18,6 @@ m{a-z} - create mark
 [/ - go to prev comment
 ]/ - go to next comment
 
-[c - diff back
-]c - diff forward
-do - diffget "obtain"
-dp - diffput
-
-f<char> - search line char forward
-F<char> - search line char backward
 t<char> - search before forward
 T<char> - search before backward
 ; - prev
@@ -39,21 +32,8 @@ ctrl+f - scroll down one screen
 
 ctrl+o - prev location
 
-zb - cursor line at bottom
-zt - cusor line at top
-zz - cusor line at middle
-z<enter> - line at top
-88z<enter> - line 88 at top
-
-x - delete char
-X - delete before char
-dw - delete word
-dd - delete line
-D - delete to end of line
 diw - delete word under cursor (excl whitespace)
 daw - delete word under cursor (incl whitespace)
-dG - delete to end of file
-dgg - delete to start of file
 
 ctrl+a - incr
 ctrl-x - decr
