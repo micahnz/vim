@@ -11,13 +11,6 @@ gJ - join lines without space
 m{a-z} - create mark
 '{a-z} - go to mark
 
-]m - go to start of next method
-]M - go to end of next method
-[m - go to start of prev method
-[M - go to end of prev method
-[/ - go to prev comment
-]/ - go to next comment
-
 t<char> - search before forward
 T<char> - search before backward
 ; - prev
