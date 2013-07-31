@@ -75,6 +75,9 @@ nmap <2-LeftMouse> <ESC>i
 " Share system clipboard
 set clipboard=unnamedplus
 
+" Better auto complete
+set completeopt=longest,menu
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

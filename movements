@@ -1,15 +1,8 @@
 # Movements
 
-w - move forward word
-W - delimited forward
-b - move backward word
-B - delimited backward
-e - move forward end of word
-E = delimited end
-ge - backward end of word
-gE - delimited backward
+J - join lines
+gJ - join lines without space
 
-% - go to matching
 { - back paragraph
 } - forward paragraph
 ( - back sentence
@@ -18,27 +11,10 @@ gE - delimited backward
 m{a-z} - create mark
 '{a-z} - go to mark
 
-]m - go to start of next method
-]M - go to end of next method
-[m - go to start of prev method
-[M - go to end of prev method
-[/ - go to prev comment
-]/ - go to next comment
-
-[c - diff back
-]c - diff forward
-do - diffget "obtain"
-dp - diffput
-
-f<char> - search line char forward
-F<char> - search line char backward
 t<char> - search before forward
 T<char> - search before backward
 ; - prev
 , - next
-
-$ - end of line
-^ - start of line
 
 ctrl+u - scroll up half up
 ctrl+y - scroll up one line up
@@ -47,25 +23,10 @@ ctrl+d - scroll down half screen
 ctrl+e - scroll down one line
 ctrl+f - scroll down one screen
 
-<num>G - goto line
 ctrl+o - prev location
-tab - next location
 
-zb - cursor line at bottom
-zt - cusor line at top
-zz - cusor line at middle
-z<enter> - line at top
-88z<enter> - line 88 at top
-
-x - delete char
-X - delete before char
-dw - delete word
-dd - delete line
-D - delete to end of line
 diw - delete word under cursor (excl whitespace)
 daw - delete word under cursor (incl whitespace)
-dG - delete to end of file
-dgg - delete to start of file
 
 ctrl+a - incr
 ctrl-x - decr
@@ -74,9 +35,6 @@ cw - change word
 C - c$ - change to end of line
 s - cl - change one char
 S - cc - change line
-
-J - join lines
-gJ - join lines without space
 
 r - replace char
 R - replace mode
