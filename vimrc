@@ -67,10 +67,10 @@ set listchars=tab:»\ ,nbsp:·,trail:·,eol:¶,extends:›,precedes:‹
 set wildmenu
 
 " Use mosue
-" set mouse=a
+set mouse=a
 
 " double click for insert mode
-" nmap <2-LeftMouse> <ESC>i
+nmap <2-LeftMouse> <ESC>i
 
 " Share system clipboard
 set clipboard=unnamedplus
@@ -113,6 +113,9 @@ set showtabline=1
 
 " Specify the behavior when switching between buffers 
 set switchbuf=useopen,usetab,newtab
+
+" No code folding
+set nofoldenable
 
 " No annoying sound on errors
 set noerrorbells
@@ -237,7 +240,7 @@ map <leader>s? z=
 " => Turn persistent undo on 
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set undodir=~/.vim/temp_dirs/undodir
+set undodir=~/.vim/.undo
 set undofile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -257,6 +260,12 @@ map <c-n> :NERDTreeToggle<cr>
 
 " lowercase s for surround.vim
 vmap s S
+
+" repmo
+:let repmo_key = ";"
+:let repmo_revkey = ","
+
+:let g:repmo_mapmotions = "j|k h|l <C-E>|<C-Y> zh|zl ]m|[m ]M|[M )|( }|{"
 
 " Cursor stuff
 " opens vim with red cursor
