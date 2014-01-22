@@ -1,5 +1,5 @@
 "No compatible
-se nocp
+set nocp
 
 " Add vim bundle to runtimepath
 " And pathogen.vim is available to us.
@@ -126,6 +126,13 @@ set novisualbell
 set t_vb=
 set tm=500
 
+function! WindowNumber()
+    let str=tabpagewinnr(tabpagenr())
+    return str
+endfunction
+
+set statusline=%<%t\ (%{WindowNumber()})\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -251,8 +258,8 @@ set undofile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_map = '<c-p>'
-map <c-p>b :CtrlPBuffer<cr>
-map <c-p>m :CtrlPMRU<cr>
+map <c-b> :CtrlPBuffer<cr>
+map <c-m> :CtrlPMRU<cr>
 let g:ctrlp_max_height = 15
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -308,3 +315,10 @@ for prefix in ['i', 'n', 'v']
     exe prefix . "noremap " . key . " <Nop>"
   endfor
 endfor
+
+" Easy window switching
+let i = 1
+while i <= 9
+    execute 'nnoremap <c-w>' . i . ' :' . i . 'wincmd w<CR>'
+    let i = i + 1
+endwhile
