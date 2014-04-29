@@ -1,12 +1,12 @@
 [submodule "bundles/xoria256"]
 	path = bundles/xoria256
-	url = git://github.com/vim-scripts/xoria256.vim.git
+	url = https://github.com/vim-scripts/xoria256.vim.git
 [submodule "bundles/surround"]
 	path = bundles/surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule "bundles/repeat"]
 	path = bundles/repeat
-	url = git://github.com/tpope/vim-repeat.git
+	url = https://github.com/tpope/vim-repeat.git
 [submodule "bundles/easymotion"]
 	path = bundles/easymotion
 	url = https://github.com/Lokaltog/vim-easymotion.git
@@ -18,10 +18,10 @@
 	url = https://github.com/kien/ctrlp.vim.git
 [submodule "bundles/fugitive"]
 	path = bundles/fugitive
-	url = git://github.com/tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
 [submodule "bundles/jshint"]
 	path = bundles/jshint
-	url = git@github.com:michaelmitchell/jshint.vim.git
+	url = https://github.com/michaelmitchell/jshint.vim.git
 [submodule "bundles/snipmate"]
 	path = bundles/snipmate
 	url = https://github.com/garbas/vim-snipmate.git
@@ -39,10 +39,10 @@
 	url = https://github.com/ervandew/supertab.git
 [submodule "bundles/snippets"]
 	path = bundles/snippets
-	url = git@github.com:michaelmitchell/snippets.git
+	url = https://github.com/michaelmitchell/snippets.git
 [submodule "bundles/dir-diff"]
 	path = bundles/dir-diff
-	url = git@github.com:michaelmitchell/DirDiff.vim.git
+	url = https://github.com/michaelmitchell/DirDiff.vim.git
 [submodule "bundles/ack"]
 	path = bundles/ack
 	url = https://github.com/mileszs/ack.vim.git
