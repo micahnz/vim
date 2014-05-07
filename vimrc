@@ -265,6 +265,11 @@ let g:ctrlp_max_height = 15
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <c-g> :GundoToggle<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Nerd Tree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeShowHidden=1
 map <c-n> :NERDTreeToggle<cr>
 
@@ -291,8 +296,10 @@ function! FixICursor()
 	redraw!
 endfunction
 
-nmap <silent> <c-l> :call FixNCursor()<cr>
+nmap <silent> <c-l> :call FixNCursor()<cr>:startinsert<cr><esc>
 imap <silent> <c-l> <esc>:call FixICursor()<cr>i
+
+map <silent> <c-h> :JSHintUpdate<cr>
 
 " use white cursor for insert mode
 let &t_SI = "\<Esc>]12;white\x7"
