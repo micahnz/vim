@@ -22,9 +22,6 @@
 [submodule "bundles/jshint"]
 	path = bundles/jshint
 	url = https://github.com/michaelmitchell/jshint.vim.git
-[submodule "bundles/snipmate"]
-	path = bundles/snipmate
-	url = https://github.com/garbas/vim-snipmate.git
 [submodule "bundles/tlib"]
 	path = bundles/tlib
 	url = https://github.com/tomtom/tlib_vim.git
@@ -34,9 +31,6 @@
 [submodule "bundles/gundo"]
 	path = bundles/gundo
 	url = https://github.com/sjl/gundo.vim.git
-[submodule "bundles/supertab"]
-	path = bundles/supertab
-	url = https://github.com/ervandew/supertab.git
 [submodule "bundles/snippets"]
 	path = bundles/snippets
 	url = https://github.com/michaelmitchell/snippets.git
@@ -46,3 +40,12 @@
 [submodule "bundles/ack"]
 	path = bundles/ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "bundles/you-complete-me"]
+	path = bundles/you-complete-me
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "bundles/tern"]
+	path = bundles/tern
+	url = https://github.com/marijnh/tern_for_vim.git
+[submodule "bundles/ultisnips"]
+	path = bundles/ultisnips
+	url = https://github.com/SirVer/ultisnips.git

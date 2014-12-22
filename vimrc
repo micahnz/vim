@@ -253,6 +253,9 @@ map <leader>s? z=
 set undodir=~/.vim/.undo
 set undofile
 
+" snippets key
+let g:UltiSnipsExpandTrigger="<c-j>"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CTRL-P
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
