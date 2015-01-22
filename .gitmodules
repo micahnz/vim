@@ -49,3 +49,9 @@
 [submodule "bundles/ultisnips"]
 	path = bundles/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
+[submodule "bundles/vaxe"]
+	path = bundles/vaxe
+	url = https://github.com/jdonaldson/vaxe.git
+[submodule "bundles/syntastic"]
+	path = bundles/syntastic
+	url = https://github.com/scrooloose/syntastic.git

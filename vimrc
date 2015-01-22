@@ -264,9 +264,10 @@ let g:ctrlp_map = '<c-p>'
 map <c-b> :CtrlPBuffer<cr>
 map <c-m> :CtrlPMRU<cr>
 let g:ctrlp_max_height = 15
+map <cr> <cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Nerd Tree
+" => Gundo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <c-g> :GundoToggle<cr>
 
@@ -320,11 +321,11 @@ au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-termi
 au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 
 " Disable arrow keys to break bad habbits
-for prefix in ['i', 'n', 'v']
-  for key in ['<Up>', '<Down>', '<Left>', '<Right>']
-    exe prefix . "noremap " . key . " <Nop>"
-  endfor
-endfor
+"for prefix in ['i', 'n', 'v']
+"  for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+"    exe prefix . "noremap " . key . " <Nop>"
+"  endfor
+"endfor
 
 " Easy window switching
 let i = 1
@@ -332,3 +333,13 @@ while i <= 9
     execute 'nnoremap <c-w>' . i . ' :' . i . 'wincmd w<CR>'
     let i = i + 1
 endwhile
+
+" syntax checking
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
