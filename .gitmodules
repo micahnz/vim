@@ -37,9 +37,6 @@
 [submodule "bundles/dir-diff"]
 	path = bundles/dir-diff
 	url = https://github.com/michaelmitchell/DirDiff.vim.git
-[submodule "bundles/ack"]
-	path = bundles/ack
-	url = https://github.com/mileszs/ack.vim.git
 [submodule "bundles/you-complete-me"]
 	path = bundles/you-complete-me
 	url = https://github.com/Valloric/YouCompleteMe.git
@@ -55,3 +52,6 @@
 [submodule "bundles/syntastic"]
 	path = bundles/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "bundles/vim-easygrep"]
+	path = bundles/vim-easygrep
+	url = git@github.com:dkprice/vim-easygrep.git
