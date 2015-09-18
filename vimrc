@@ -131,7 +131,7 @@ function! WindowNumber()
     return str
 endfunction
 
-set statusline=%<%t\ (%{WindowNumber()})\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%t\ (%{WindowNumber()}\|%n)\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
